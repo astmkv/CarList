@@ -1,0 +1,76 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class EasyCar extends Car {
+    public EasyCar() {
+        String className = "EasyCar";
+    }
+
+    public EasyCar(String make, String model, String cat, String type, String number, String year, String trailer) {
+        super(make, model, cat, type, number, year, trailer);
+    }
+
+    @Override
+    public String[][] input(Scanner in) {
+        String className = "EasyCar";
+        String arrCarList[][] = new String[7][1];
+        System.out.println("Укажите технические данные для ТС");
+
+        System.out.print("Марка: ");
+        make = in.nextLine();
+        arrCarList[0][0] = make;
+
+        System.out.print("Модель: ");
+        model = in.nextLine();
+        arrCarList[1][0] = model;
+
+        System.out.print("Категория: ");
+            System.out.print("1 - B, 2 - BE: ");
+            int select = in.nextInt();
+            switch (select) {
+                case 1 -> cat = "B";
+                case 2 -> cat = "BE";
+            }
+
+        arrCarList[2][0] = cat;
+
+        System.out.print("Тип: ");
+                System.out.print("1 - M1, 2 - N1: ");
+                select = in.nextInt();
+                switch (select) {
+                    case 1 -> type = "M1";
+                    case 2 -> type = "N1";
+                }
+
+        arrCarList[3][0] = type;
+
+        System.out.print("Госномер: ");
+        number = in.next();
+        arrCarList[4][0] = number;
+
+        System.out.print("Год выпуска: ");
+        year = in.next();
+        arrCarList[5][0] = year;
+
+        System.out.print("Прицеп: ");
+        switch (cat) {
+            case "B":
+                System.out.print("1 - без прицепа, 2 - прицеп О1: ");
+                select = in.nextInt();
+                switch (select) {
+                    case 1 -> trailer = "-";
+                    case 2 -> trailer = "O1";
+                } break;
+            case "BE":
+                System.out.print("1 - без прицепа, 2 - прицеп О2: ");
+                select = in.nextInt();
+                switch (select) {
+                    case 1 -> trailer = "-";
+                    case 2 -> trailer = "O2";
+                }break;
+        }
+        arrCarList[6][0] = trailer;
+        return arrCarList;
+    }
+}
